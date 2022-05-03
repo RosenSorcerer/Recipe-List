@@ -1,0 +1,3 @@
+recipe_id, username, title, summary, rating, url
+1,"recommended","Test1","Test Item Number 1",5,"http://www.google.com"
+2,"recommended","Test2","Test Item Number 2",4,"http://tastythings.com"
