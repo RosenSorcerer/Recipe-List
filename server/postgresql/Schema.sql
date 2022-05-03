@@ -7,7 +7,7 @@ CREATE TABLE recipes (
   title text,
   summary text,
   rating int,
-  url text UNIQUE
+  url text UNIQUE,
   lastAte DATE NOT NULL DEFAULT CURRENT_DATE
 );
 

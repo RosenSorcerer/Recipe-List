@@ -9,7 +9,14 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
   console.log(req.body);
-  res.end();
+  var newRecipe = req.body;
+  db.query(`INSERT INTO recipes(username, title, summary, rating) VALUES ($1, $2, $3, $4)`, [newRecipe.username, newRecipe.title, newRecipe.summary, newRecipe.rating], (err, result) => {
+    if (err) {
+      return console.log(err);
+    }
+    res.header("Access-Control-Allow-Origin", "*");
+    res.end();
+  })
 })
 
 app.get('/list', (req, res) => {
