@@ -3,11 +3,9 @@ import RecipeList from "./components/RecipeList.jsx";
 import {createRoot} from "react-dom/client";
 import axios from "axios";
 import Helpers from './APIHelpers.js';
-
-
+import './styles/styles.css'
 
 const root = createRoot(document.getElementById("root"));
-
 
 const App = () => {
   const [username,    setUser     ] = useState('recommended');

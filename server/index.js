@@ -10,7 +10,7 @@ app.use(express.json());
 app.post('/', (req, res) => {
   console.log(req.body);
   var newRecipe = req.body;
-  db.query(`INSERT INTO recipes(username, title, summary, rating) VALUES ($1, $2, $3, $4)`, [newRecipe.username, newRecipe.title, newRecipe.summary, newRecipe.rating], (err, result) => {
+  db.query(`INSERT INTO recipes(username, title, summary, rating, url) VALUES ($1, $2, $3, $4, $5)`, [newRecipe.username, newRecipe.title, newRecipe.summary, newRecipe.rating, newRecipe.url], (err, result) => {
     if (err) {
       return console.log(err);
     }
