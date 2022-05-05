@@ -16,6 +16,13 @@ const APIHelpers = {
     axios.post(serverAddr, recipe)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
+  },
+
+  ateRecipe: (recipe, callback) => {
+    console.log('ping api helpers');
+    axios.put(`${serverAddr}/justAte`, recipe)
+      .then(res => callback(null, res.data))
+      .catch(err => callback(err));
   }
 }
 

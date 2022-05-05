@@ -21,13 +21,12 @@ const App = () => {
       if (err) {
         console.error('Error Fetching Recipes' + err);
       } else {
-        console.log(results.results);
         if (results.results) {
           setRecipes(results.results);
         }
       }
     });
-  }, [username, rating]);
+  }, [username, rating, update]);
 
   var forceUpdate = () => {
     if (update < 100) {
@@ -38,19 +37,24 @@ const App = () => {
   }
 
   var submitRecipe = (recipe) => {
-    console.log(recipe);
     recipe.username = recipe.username || 'recommended';
     Helpers.postRecipe(recipe, (err) => {
-      if (err) {console.log(err)}
+      if (err) {console.error(err)}
+      forceUpdate();
     });
-    forceUpdate();
+  }
+  var justAte = (recipe) => {
+    Helpers.ateRecipe(recipe, (err) => {
+      if (err) {console.error(err)};
+        forceUpdate();
+    })
   }
 
   return (
     <div className="App">
       <div className="Head"><h1>Recipe List</h1></div>
       <NewRecipe submitRecipe={submitRecipe}/>
-      <RecipeList recipes={recipeList}/>
+      <RecipeList recipes={recipeList} justAte={justAte}/>
     </div>
 
   )}

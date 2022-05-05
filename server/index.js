@@ -71,7 +71,7 @@ app.get('/', (req, res) => {
   var user = req.query.user || 'recommended';
   var rating = req.query.rating || 0;
   if (req.query.rating > 0) {
-    db.query(`SELECT JSON_AGG(recipes) FROM (SELECT * FROM recipes WHERE username = $1 AND rating = $2) recipes`, [user, rating], (err, result) => {
+    db.query(`SELECT JSON_AGG(recipes ORDER BY lastAte desc) FROM (SELECT * FROM recipes WHERE username = $1 AND rating = $2) recipes`, [user, rating], (err, result) => {
       if (err) {
         return console.log(err);
       }

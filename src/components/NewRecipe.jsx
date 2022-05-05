@@ -48,7 +48,7 @@ var NewRecipe = ({submitRecipe}) => {
       {visible ? (
         <div className='New-Recipe-Background'>
           <div className='New-Recipe'>
-            <label>Title</label><input type='text' className='title' onChange={handleChange} placeholder='Title'/><br/>
+            <label>Title</label><input type='text' className='title' onChange={handleChange} placeholder='Title'/>
             <label>Rating</label><input type='range' className='rating' value={state.rating} className='rating' min= '0' max='5' onChange={handleChange}/>
             <label>Summary</label><input type='text' className='summary' onChange={handleChange} placeholder='Summary'/>
             <label>Link</label><input type='text' className='url' onChange={handleChange} placeholder='Link'/>
