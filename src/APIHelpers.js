@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const URL = 'http://localhost:';
-const PORT = '3001';
+const PORT = '8000';
 const serverAddr = URL + PORT;
 
 const APIHelpers = {
@@ -13,7 +13,7 @@ const APIHelpers = {
   },
 
   postRecipe: (recipe, callback) => {
-    axios.post(`${serverAddr}`, recipe)
+    axios.post(serverAddr, recipe)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   }
