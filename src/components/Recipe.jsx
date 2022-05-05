@@ -42,7 +42,7 @@ var Recipe = ({recipe, justAte}) => {
     <div className='Recipe'>
       <h2 className='Title'>{recipe.title}</h2>
       <StarRating rating={recipe.rating}/>
-      <h3>Last ate {recipe.lastate}, {lastate}</h3>
+      <h3>Last ate {expanded ? recipe.lastate : lastate}</h3>
       <p className='Summary'>{expanded ? recipe.summary : ''}</p>
       <div className='ButtonBar'>
         <button className='Info' onClick={toggleExpanded}>{expanded ? 'Less Info' : 'More Info'}</button>
