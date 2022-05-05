@@ -27,6 +27,38 @@ app.post('/', (req, res) => {
     console.log('request stored');
     res.end('success!');
   })
+});
+
+app.put('/rating', (req, res, next) => {
+  console.log('updating rating');
+  var recipe = req.body.recipe;
+  var newRating = req.body.rating
+
+  db.query(`UPDATE recipes SET ratings = $1 WHERE recipe_id = $2`,[newRating, recipe.recipe_id], (err, result) => {
+    if (err) {
+      res.status(400).end();
+      console.log('bad ping');
+      console.log(err);
+    }
+    res.header("Access-Control-Allow-Origin", "*");
+    console.log('recipe rating changed');
+    res.end('success!');
+  })
+});
+
+app.put('/justAte', (req, res, next) => {
+  console.log('updating date eaten');
+  var recipe = req.body;
+  db.query(`UPDATE recipes SET lastAte = CURRENT_DATE WHERE recipe_id = $1`, [recipe.recipe_id], (err, result) => {
+    if (err) {
+      res.status(400).end();
+      console.log('bad ping');
+      console.log(err);
+    }
+    res.header("Access-Control-Allow-Origin", "*");
+    console.log('Recipe Just Ate!~');
+    res.end('success!');
+  })
 })
 
 app.get('/list', (req, res) => {
