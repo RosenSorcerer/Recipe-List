@@ -31,7 +31,6 @@ const App = () => {
   var forceUpdate = () => {
     if (update < 100) {
       setUpdate(update + 1);
-      console.log(update);
     } else {
       setUpdate(0)
     }
